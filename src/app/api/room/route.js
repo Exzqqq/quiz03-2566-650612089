@@ -45,20 +45,20 @@ export const POST = async (request) => {
     return NextResponse.json(
       {
         ok: false,
-        message: `Room '${roomName}' already exists`,
+        message: `Room ${body.roomName} already exists`,
       },
       { status: 400 }
     );
   }
 
   const roomId = nanoid();
-  writeDB();
-  DB.rooms.push({ roomId, name: roomName });
 
+  DB.rooms.push({ roomId,roomName });
+  writeDB();
 
   return NextResponse.json({
     ok: true,
     roomId: roomId,
-    message: `Room '${roomName}' has been created`,
+    message: `Room ${body.roomName} has been created`,
   });
 };
