@@ -39,7 +39,6 @@ export const POST = async (request) => {
   const body = await request.json();
   const { roomName } = body
 
-  // Check if the room with the same name already exists
   const createdRoom = DB.rooms.find(x => x.roomName ===roomName)
 
   if (createdRoom) {
